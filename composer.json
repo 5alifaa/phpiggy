@@ -1,18 +1,21 @@
 {
-    "name": "mohamedkhalifa/phpiggy",
-    "description": "A PHP application for tracking expenses.",
-    "type": "project",
-    "authors": [
-        {
-            "name": "Mohamed Khalifa",
-            "email": "5alifa.dev@gmail.com"
-        }
-    ],
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "Framework\\": "src/Framework",
-            "App\\": "src/App"
-        }
+  "name": "mohamedkhalifa/phpiggy",
+  "description": "A PHP application for tracking expenses.",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Mohamed Khalifa",
+      "email": "5alifa.dev@gmail.com"
     }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "src/Framework",
+      "App\\": "src/App"
+    },
+    "files": [
+      "src/App/Config/Routes.php"
+    ]
+  }
 }

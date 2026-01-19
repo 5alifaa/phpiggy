@@ -22,6 +22,11 @@
       <phpcs_by_interpreter asDefaultInterpreter="true" interpreter_id="66abcd52-44c1-42fd-9efd-770a2cf652bc" timeout="30000" />
     </phpcs_settings>
   </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>

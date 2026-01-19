@@ -7,22 +7,28 @@ namespace Framework;
 class App
 {
     private Router $router;
+    private Container $container;
 
-    public function __construct()
+    public function __construct(string $containerDefinitionPath = null)
     {
         $this->router = new Router();
+        $this->container = new Container();
+        if ($containerDefinitionPath) {
+            $containerDefinitions = include $containerDefinitionPath;
+            $this->container->addDefinitions($containerDefinitions);
+        }
     }
 
     public function run()
     {
-        $path = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
 
-        $this->router->dispatch($path,$method);
+        $this->router->dispatch($path, $method);
     }
 
-    public function get(string $path,array $controller)
+    public function get(string $path, array $controller)
     {
-        $this->router->add('GET',$path, $controller);
+        $this->router->add('GET', $path, $controller);
     }
 }

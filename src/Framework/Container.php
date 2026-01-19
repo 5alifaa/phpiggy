@@ -2,6 +2,8 @@
 
 namespace Framework;
 
+use ReflectionClass;
+
 class Container
 {
     private array $definitions = [];
@@ -9,7 +11,12 @@ class Container
     public function addDefinitions(array $newDefinitions)
     {
         $this->definitions = [...$this->definitions, ...$newDefinitions];
+    }
 
-        dd($this->definitions);
+    public function resolve(string $className)
+    {
+        $reflectionClass = new ReflectionClass($className);
+
+        dd($reflectionClass);
     }
 }

@@ -4,6 +4,7 @@ namespace Framework;
 
 use Framework\Exceptions\ContainerExceptions;
 use ReflectionClass;
+use ReflectionNamedType;
 
 class Container
 {
@@ -33,7 +34,22 @@ class Container
         if (count($params) === 0) {
             return new $className;
         }
-        
+
+        $dependencies = [];
+
+        foreach ($params as $param) {
+            $name = $param->getName();
+            $type = $param->getType();
+
+            if (!$type) {
+                throw new ContainerExceptions("Faild to resolve class {$className} because param {$name} is missing type hing.");
+            }
+
+            if (!$type instanceof ReflectionNamedType || $type->isBuiltin()) {
+                throw new ContainerExceptions("Faild to resolve class {$className} because invalid param name.");
+            }
+        }
+
         dd($params);
     }
 }
